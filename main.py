@@ -42,6 +42,6 @@ if queries_file and search_volume_file and st.button("Add monthly search volume 
     if merged_df is not None:
         csv = merged_df.to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
-        href = f'<a href="data:file/csv;base64,{b64}" download="updated_queries.csv">Download updated CSV</a>'
+        href = f'<a href="data:file/csv;base64,{b64}" download="updated_queries_with_monthly_search_volume.csv">Download updated CSV</a>'
         st.markdown(href, unsafe_allow_html=True)
 
