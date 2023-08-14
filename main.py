@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import io
+import base64
 
 def merge_data(queries_file, search_volume_file):
     # Daten aus den hochgeladenen Dateien laden
@@ -21,6 +21,9 @@ def merge_data(queries_file, search_volume_file):
     
     # Löschen der "Keyword"-Spalte nach dem Merge
     merged_df = merged_df.drop(columns='Keyword')
+    
+    # Entfernen der Zeilen mit leeren Werten in der "Avg. monthly searches"-Spalte
+    merged_df = merged_df.dropna(subset=['Avg. monthly searches'])
     
     return merged_df
 
